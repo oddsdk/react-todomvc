@@ -19,8 +19,10 @@ const reducer = async (state, action) => {
 
   switch (action.type) {
     case 'all':
-      const todos = await fs.read(todosPath)
-      state.todos = JSON.parse(todos)
+      if (await fs.exists(todosPath)) {
+        const todos = await fs.read(todosPath)
+        state.todos = JSON.parse(todos)
+      }
       break;
 
     case 'add':
