@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 
 import { useAuth } from '../hooks/useAuth';
 import { useFilesystem } from '../hooks/useFilesystem';
+import TodoItem from "./TodoItem";
 
 
 export default function TodoList() {
@@ -31,12 +32,27 @@ export default function TodoList() {
     }
   }
 
-  const allSelected = () => false
+  const visibleTodos = todos?.todos ?? [];
+
+  const updateTodo = async event => {
+    const { type, id } = event.detail;
+
+    switch (type) {
+      case 'toggleCompletion':
+        await dispatch({ type: "toggleCompletion", value: id });
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  // TODOS: code todos before app todos :)
+  const allSelected = false
   const anyDone = () => false
   const onClearCompleted = () => { }
   const onToggleAll = () => { }
   const left = []
-  const visibleTodos = []
 
   return (
     <React.Fragment>
@@ -62,7 +78,7 @@ export default function TodoList() {
         <label htmlFor="toggle-all" />
         <ul className="todo-list">
           {visibleTodos.map(todo => (
-            <span>todo item here</span>
+            <TodoItem key={todo.id} todo={todo} onUpdate={updateTodo} />
           ))}
         </ul>
       </section>

@@ -31,6 +31,14 @@ const reducer = async (state, action) => {
       await fs.publish();
       break;
 
+    case 'toggleCompletion':
+      state.todos = state.todos.map(todo =>
+        todo.id === action.value ? { ...todo, completed: !todo.completed } : todo
+      )
+      await fs.write(todosPath, JSON.stringify(state.todos));
+      await fs.publish();
+      break;
+
     default:
       break;
   }
