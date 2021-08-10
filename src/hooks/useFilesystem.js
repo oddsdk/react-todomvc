@@ -37,10 +37,17 @@ const reducer = async (state, action) => {
       await fs.publish();
       break;
 
+
     case 'toggleCompletion':
       state = state.map(todo =>
         todo.id === action.value ? { ...todo, completed: !todo.completed } : todo
       )
+      await fs.write(todosPath, JSON.stringify(state));
+      await fs.publish();
+      break;
+
+    case 'toggleAll':
+      state = state.map(todo => ({...todo, completed: !action.value}))
       await fs.write(todosPath, JSON.stringify(state));
       await fs.publish();
       break;
@@ -61,7 +68,7 @@ const reducer = async (state, action) => {
 export function useFilesystem(filesystem) {
   fs = filesystem;
 
-  const [todos, dispatch] = useAsyncReducer(reducer,  []);
+  const [todos, dispatch] = useAsyncReducer(reducer, []);
 
   useEffect(() => {
     async function init() {

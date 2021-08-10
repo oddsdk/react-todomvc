@@ -58,11 +58,14 @@ export default function TodoList() {
     await dispatch({ type: "clearCompleted" })
   }
 
+  const onToggleAll = async () => {
+    await dispatch({ type: 'toggleAll', value: allCompleted })
+  }
+
   const visibleTodos = todos ?? []
   const allCompleted = visibleTodos.every(todo => todo.completed);
   const anyCompleted = visibleTodos.some(todo => todo.completed)
 
-  const onToggleAll = () => { }
   const left = []
 
   return (
