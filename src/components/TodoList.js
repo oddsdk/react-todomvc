@@ -21,18 +21,21 @@ export default function TodoList() {
     if (event.key === "Enter") {
       event.preventDefault();
 
-      const todo = {
-        id: uuid(),
-        title: event.target.value,
-        completed: false
+      const title = event.target.value.trim();
+
+      if (title.length > 0) {
+        const todo = {
+          id: uuid(),
+          title,
+          completed: false
+        }
+        await dispatch({ type: "add", value: todo });
       }
 
-      await dispatch({ type: "add", value: todo });
       setNewTodo('');
     }
   }
 
-  const visibleTodos = todos ?? []
 
   const updateTodo = async event => {
     const { type, id } = event.detail;
@@ -52,12 +55,13 @@ export default function TodoList() {
   }
 
   const onClearCompleted = async () => {
-    await dispatch({type: "clearCompleted"})
+    await dispatch({ type: "clearCompleted" })
   }
 
-  // TODOS: code todos before app todos :)
-  const allSelected = false
-  const anyDone = () => false
+  const visibleTodos = todos ?? []
+  const allCompleted = visibleTodos.every(todo => todo.completed);
+  const anyCompleted = visibleTodos.some(todo => todo.completed)
+
   const onToggleAll = () => { }
   const left = []
 
@@ -79,7 +83,7 @@ export default function TodoList() {
           id="toggle-all"
           type="checkbox"
           className="toggle-all"
-          checked={allSelected}
+          checked={allCompleted}
           onChange={onToggleAll}
         />
         <label htmlFor="toggle-all" />
@@ -111,7 +115,7 @@ export default function TodoList() {
             </NavLink>
           </li>
         </ul>
-        {anyDone && (
+        {anyCompleted && (
           <button className="clear-completed" onClick={onClearCompleted}>
             Clear completed
           </button>
