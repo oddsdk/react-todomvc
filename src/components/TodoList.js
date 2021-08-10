@@ -32,7 +32,7 @@ export default function TodoList() {
     }
   }
 
-  const visibleTodos = todos?.todos ?? []
+  const visibleTodos = todos ?? []
 
   const updateTodo = async event => {
     const { type, id } = event.detail;
@@ -52,11 +52,7 @@ export default function TodoList() {
   }
 
   const onClearCompleted = async () => {
-    todos.todos.forEach(async todo => {
-      if (todo.completed) {
-        await dispatch({ type: "delete", value: todo.id });
-      }
-    });
+    await dispatch({type: "clearCompleted"})
   }
 
   // TODOS: code todos before app todos :)

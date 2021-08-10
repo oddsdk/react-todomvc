@@ -21,41 +21,47 @@ const reducer = async (state, action) => {
     case 'all':
       if (await fs.exists(todosPath)) {
         const todos = await fs.read(todosPath)
-        state.todos = JSON.parse(todos)
+        state = JSON.parse(todos)
       }
       break;
 
     case 'add':
-      state.todos.push(action.value);
-      await fs.write(todosPath, JSON.stringify(state.todos));
+      state.push(action.value);
+      await fs.write(todosPath, JSON.stringify(state));
       await fs.publish();
       break;
 
     case 'delete':
-      state.todos = state.todos.filter(todo => todo.id !== action.value);
-      await fs.write(todosPath, JSON.stringify(state.todos));
+      state = state.filter(todo => todo.id !== action.value);
+      await fs.write(todosPath, JSON.stringify(state));
       await fs.publish();
       break;
 
     case 'toggleCompletion':
-      state.todos = state.todos.map(todo =>
+      state = state.map(todo =>
         todo.id === action.value ? { ...todo, completed: !todo.completed } : todo
       )
-      await fs.write(todosPath, JSON.stringify(state.todos));
+      await fs.write(todosPath, JSON.stringify(state));
+      await fs.publish();
+      break;
+
+    case 'clearCompleted':
+      state = state.filter(todo => !todo.completed);
+      await fs.write(todosPath, JSON.stringify(state));
       await fs.publish();
       break;
 
     default:
       break;
   }
-  return { ...state };
+  return state;
 }
 
 
 export function useFilesystem(filesystem) {
   fs = filesystem;
 
-  const [todos, dispatch] = useAsyncReducer(reducer, { todos: [] });
+  const [todos, dispatch] = useAsyncReducer(reducer,  []);
 
   useEffect(() => {
     async function init() {
