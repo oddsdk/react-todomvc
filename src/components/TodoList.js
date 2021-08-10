@@ -32,7 +32,7 @@ export default function TodoList() {
     }
   }
 
-  const visibleTodos = todos?.todos ?? [];
+  const visibleTodos = todos?.todos ?? []
 
   const updateTodo = async event => {
     const { type, id } = event.detail;
@@ -42,15 +42,26 @@ export default function TodoList() {
         await dispatch({ type: "toggleCompletion", value: id });
         break;
 
+      case 'delete':
+        await dispatch({ type: "delete", value: id });
+        break;
+
       default:
         break;
     }
   }
 
+  const onClearCompleted = async () => {
+    todos.todos.forEach(async todo => {
+      if (todo.completed) {
+        await dispatch({ type: "delete", value: todo.id });
+      }
+    });
+  }
+
   // TODOS: code todos before app todos :)
   const allSelected = false
   const anyDone = () => false
-  const onClearCompleted = () => { }
   const onToggleAll = () => { }
   const left = []
 

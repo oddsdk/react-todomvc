@@ -7,13 +7,15 @@ export default function TodoItem({ todo, onUpdate}) {
     onUpdate({detail: {type: 'toggleCompletion', id: todo.id}})
   }
 
+  const onDelete = async () => {
+    onUpdate({detail: {type: 'delete', id: todo.id}})
+  }
+
+
   // TODOS
   const onChange = () => {}
-  const onDelete = () => {}
   const handleViewClick = () => {}
-  const onEnter = () => {
-    // update editing state
-  }
+  const onEnter = () => {}
 
   return (
     <li

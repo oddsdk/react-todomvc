@@ -34,6 +34,9 @@ export function useAuth() {
     case wn.Scenario.Continuation:
       fs = state.fs;
       break;
+
+    default:
+      break;
   }
 
   return { authorise, fs, state }
