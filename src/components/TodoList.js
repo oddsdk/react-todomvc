@@ -64,9 +64,8 @@ export default function TodoList() {
 
   const visibleTodos = todos ?? []
   const allCompleted = visibleTodos.every(todo => todo.completed);
-  const anyCompleted = visibleTodos.some(todo => todo.completed)
-
-  const left = []
+  const anyCompleted = todos?.some(todo => todo.completed);
+  const left = todos?.reduce((acc, curr) => acc + (curr.completed ? 0 : 1), 0);
 
   return (
     <React.Fragment>
