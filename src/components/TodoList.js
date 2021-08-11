@@ -102,7 +102,7 @@ export default function TodoList() {
 
       <footer className="footer">
         <span className="todo-count">
-          <strong>{left}</strong> items left
+          <strong>{left}</strong> {left === 1 ? "item" : "items"} left
         </span>
         <ul className="filters">
           <li>
