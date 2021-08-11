@@ -81,6 +81,7 @@ export default function TodoList() {
           onKeyPress={onAddTodo}
           value={newTodo}
           onChange={onNewValue}
+          autoFocus={true}
         />
       </header>
 

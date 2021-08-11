@@ -73,7 +73,6 @@ export default function TodoItem({ todo, onUpdate }) {
           className="toggle"
           checked={todo.completed}
           onChange={onCompletion}
-          autoFocus={true}
         />
         <label>{todo.title}</label>
         <button className="destroy" onClick={onDelete} />
