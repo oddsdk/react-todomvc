@@ -7,7 +7,7 @@ import { useFilesystem } from '../hooks/useFilesystem';
 import TodoItem from "./TodoItem";
 
 
-export default function TodoList() {
+export default function TodoList({ match }) {
   const { fs } = useAuth();
 
   const [todos, dispatch] = useFilesystem(fs);
@@ -35,7 +35,6 @@ export default function TodoList() {
       setNewTodo('');
     }
   }
-
 
   const updateTodo = async event => {
     const { type, id, todo } = event.detail;
@@ -66,7 +65,13 @@ export default function TodoList() {
     await dispatch({ type: 'toggleAll', value: allCompleted })
   }
 
-  const visibleTodos = todos ?? []
+  const visibleTodos =
+    match.params.filter
+      ? todos.filter(todo =>
+        match.params.filter === "active" ? !todo.completed : todo.completed
+      )
+      : todos ?? []
+
   const allCompleted = visibleTodos.every(todo => todo.completed);
   const anyCompleted = todos?.some(todo => todo.completed);
   const left = todos?.reduce((acc, curr) => acc + (curr.completed ? 0 : 1), 0);
