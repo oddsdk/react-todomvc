@@ -1,21 +1,66 @@
 import React, { useState } from "react";
 
-export default function TodoItem({ todo, onUpdate}) {
+export default function TodoItem({ todo, onUpdate }) {
   const [editing, setEditing] = useState(false);
+  const [modifiedTodo, setModifiedTodo] = useState(todo);
 
   const onCompletion = async () => {
-    onUpdate({detail: {type: 'toggleCompletion', id: todo.id}})
+    onUpdate({ detail: { type: 'toggleCompletion', id: todo.id } })
   }
 
   const onDelete = async () => {
-    onUpdate({detail: {type: 'delete', id: todo.id}})
+    onUpdate({ detail: { type: 'delete', id: todo.id } })
   }
 
+  const onNewValue = event => {
+    setModifiedTodo({ ...modifiedTodo, title: event.target.value })
+  }
 
-  // TODOS
-  const onChange = () => {}
-  const handleViewClick = () => {}
-  const onEnter = () => {}
+  const onKeyDown = event => {
+    switch (event.key) {
+      case 'Escape':
+        setModifiedTodo(todo);
+        setEditing(false);
+        break;
+
+      case 'Enter':
+        handleTitleUpdate();
+        setEditing(false);
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  const onBlur = () => {
+    handleTitleUpdate();
+    setEditing(false);
+  }
+
+  const handleTitleUpdate = () => {
+    const trimmedTitle = modifiedTodo.title.trim();
+    trimmedTitle.length > 0 ?
+      onUpdate({
+        detail: {
+          type: 'update',
+          todo: { ...modifiedTodo, title: trimmedTitle }
+        }
+      }) :
+      onDelete();
+  }
+
+  // Set to editing on double click
+  const handleViewClick = event => {
+    switch (event.detail) {
+      case 2:
+        setEditing(true)
+        break;
+
+      default:
+        break;
+    }
+  }
 
   return (
     <li
@@ -36,9 +81,10 @@ export default function TodoItem({ todo, onUpdate}) {
       {editing && (
         <input
           className="edit"
-          value={todo.label}
-          onChange={onChange}
-          onKeyPress={onEnter}
+          value={modifiedTodo.title}
+          onChange={onNewValue}
+          onKeyDown={onKeyDown}
+          onBlur={onBlur}
         />
       )}
     </li>

@@ -31,12 +31,17 @@ const reducer = async (state, action) => {
       await fs.publish();
       break;
 
+    case 'update':
+      state = state.map(todo => todo.id === action.value.id ? action.value : todo);
+      await fs.write(todosPath, JSON.stringify(state));
+      await fs.publish();
+      break;
+
     case 'delete':
       state = state.filter(todo => todo.id !== action.value);
       await fs.write(todosPath, JSON.stringify(state));
       await fs.publish();
       break;
-
 
     case 'toggleCompletion':
       state = state.map(todo =>
@@ -47,7 +52,7 @@ const reducer = async (state, action) => {
       break;
 
     case 'toggleAll':
-      state = state.map(todo => ({...todo, completed: !action.value}))
+      state = state.map(todo => ({ ...todo, completed: !action.value }))
       await fs.write(todosPath, JSON.stringify(state));
       await fs.publish();
       break;

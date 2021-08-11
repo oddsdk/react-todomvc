@@ -38,11 +38,15 @@ export default function TodoList() {
 
 
   const updateTodo = async event => {
-    const { type, id } = event.detail;
+    const { type, id, todo } = event.detail;
 
     switch (type) {
       case 'toggleCompletion':
         await dispatch({ type: "toggleCompletion", value: id });
+        break;
+
+      case 'update':
+        await dispatch({ type: "update", value: todo });
         break;
 
       case 'delete':
