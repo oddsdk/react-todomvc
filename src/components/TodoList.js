@@ -84,49 +84,53 @@ export default function TodoList() {
         />
       </header>
 
-      <section className="main">
-        <input
-          id="toggle-all"
-          type="checkbox"
-          className="toggle-all"
-          checked={allCompleted}
-          onChange={onToggleAll}
-        />
-        <label htmlFor="toggle-all" />
-        <ul className="todo-list">
-          {visibleTodos.map(todo => (
-            <TodoItem key={todo.id} todo={todo} onUpdate={updateTodo} />
-          ))}
-        </ul>
-      </section>
-
-      <footer className="footer">
-        <span className="todo-count">
-          <strong>{left}</strong> {left === 1 ? "item" : "items"} left
-        </span>
-        <ul className="filters">
-          <li>
-            <NavLink exact={true} to="/" activeClassName="selected">
-              All
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/active" activeClassName="selected">
-              Active
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/completed" activeClassName="selected">
-              Completed
-            </NavLink>
-          </li>
-        </ul>
-        {anyCompleted && (
-          <button className="clear-completed" onClick={onClearCompleted}>
-            Clear completed
-          </button>
+      {todos?.length > 0 &&
+        (<section className="main">
+          <input
+            id="toggle-all"
+            type="checkbox"
+            className="toggle-all"
+            checked={allCompleted}
+            onChange={onToggleAll}
+          />
+          <label htmlFor="toggle-all" />
+          <ul className="todo-list">
+            {visibleTodos.map(todo => (
+              <TodoItem key={todo.id} todo={todo} onUpdate={updateTodo} />
+            ))}
+          </ul>
+        </section>
         )}
-      </footer>
+
+      {todos?.length > 0 &&
+        (<footer className="footer">
+          <span className="todo-count">
+            <strong>{left}</strong> {left === 1 ? "item" : "items"} left
+          </span>
+          <ul className="filters">
+            <li>
+              <NavLink exact={true} to="/" activeClassName="selected">
+                All
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/active" activeClassName="selected">
+                Active
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/completed" activeClassName="selected">
+                Completed
+              </NavLink>
+            </li>
+          </ul>
+          {anyCompleted && (
+            <button className="clear-completed" onClick={onClearCompleted}>
+              Clear completed
+            </button>
+          )}
+        </footer>
+        )}
     </React.Fragment>
   );
 }
