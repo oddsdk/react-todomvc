@@ -11,8 +11,6 @@ The repository implements TodoMVC with React and [webnative](https://github.com/
 - [Vite build](https://github.com/fission-suite/react-todomvc/tree/vite)
 - [Parcel build](https://github.com/fission-suite/react-todomvc/tree/parcel)
 
-**Note:** We currently recommend the Vite configuration for the latest webnative builds.
-
 ## Migration to Vite or Parcel
 
 The app was initialized with Create React App and migrated to Vite and Parcel. See the [Migrate from CRA to Vite](https://github.com/fission-suite/react-todomvc/pull/2) and [Migrate from CRA to parcel](https://github.com/fission-suite/react-todomvc/pull/1) pull requests for guides and diffs to help you migrate from Create React App.
