@@ -12,7 +12,7 @@
     "todomvc-app-css": "^2.4.1",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2",
-    "webnative": "^0.25.2"
+    "webnative": "^0.28.1"
   },
   "scripts": {
     "start": "parcel public/index.html",
@@ -41,5 +41,11 @@
     "@parcel/transformer-image": "^2.0.0-rc.0",
     "@parcel/transformer-webmanifest": "^2.0.0-rc.0",
     "parcel": "^2.0.0-rc.0"
+  },
+  "resolutions": {
+    "**/ipfs-message-port-protocol": "https://ipfs.runfission.com/ipfs/bafybeigx6q4aezve7my76s5vvfuiinbxtepapqvmjf2jbgrozrut6cjape/p/ipfs-message-port-protocol.tar.gz"
+  },
+  "overrides": {
+    "ipfs-message-port-protocol": "https://ipfs.runfission.com/ipfs/bafybeigx6q4aezve7my76s5vvfuiinbxtepapqvmjf2jbgrozrut6cjape/p/ipfs-message-port-protocol.tar.gz"
   }
 }
