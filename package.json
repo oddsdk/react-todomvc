@@ -37,10 +37,9 @@
     ]
   },
   "devDependencies": {
-    "@parcel/packager-raw-url": "^2.0.0-rc.0",
-    "@parcel/transformer-image": "^2.0.0-rc.0",
-    "@parcel/transformer-webmanifest": "^2.0.0-rc.0",
-    "parcel": "^2.0.0-rc.0"
+    "@parcel/packager-raw-url": "2.0.0-nightly.2469",
+    "@parcel/transformer-webmanifest": "2.0.0-nightly.2469",
+    "parcel": "2.0.0-nightly.845"
   },
   "resolutions": {
     "**/ipfs-message-port-protocol": "https://ipfs.runfission.com/ipfs/bafybeigx6q4aezve7my76s5vvfuiinbxtepapqvmjf2jbgrozrut6cjape/p/ipfs-message-port-protocol.tar.gz"
