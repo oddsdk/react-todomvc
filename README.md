@@ -1,19 +1,20 @@
 # Webnative React TodoMVC
 
 [![Built by FISSION](https://img.shields.io/badge/⌘-Built_by_FISSION-purple.svg)](https://fission.codes)
-[![Built by FISSION](https://img.shields.io/badge/webnative-v0.26.2-purple.svg )](https://github.com/fission-suite/webnative)
+[![Built by FISSION](https://img.shields.io/badge/webnative-v0.28.1-purple.svg )](https://github.com/fission-suite/webnative)
 [![Discord](https://img.shields.io/discord/478735028319158273.svg)](https://discord.gg/zAQBDEq)
 [![Discourse](https://img.shields.io/discourse/https/talk.fission.codes/topics)](https://talk.fission.codes)
 
-The repository implements TodoMVC with React and [webnative](https://github.com/fission-suite/webnative). The repository includes branches that demonstrate the same app configured with Create React App, Vite, and Parcel:
+The repository implements TodoMVC with React and [webnative](https://github.com/fission-suite/webnative). The repository includes branches that demonstrate the same app configured with Create React App, Vite, Parcel, and Webpack:
 
 - [Create React App build](https://github.com/fission-suite/react-todomvc)
 - [Vite build](https://github.com/fission-suite/react-todomvc/tree/vite)
 - [Parcel build](https://github.com/fission-suite/react-todomvc/tree/parcel)
+- [Webpack build](https://github.com/fission-suite/react-todomvc/tree/webpack)
 
-## Migration to Vite or Parcel
+## Migration to Vite, Parcel, or Webpack
 
-The app was initialized with Create React App and migrated to Vite and Parcel. See the [Migrate from CRA to Vite](https://github.com/fission-suite/react-todomvc/pull/2) and [Migrate from CRA to parcel](https://github.com/fission-suite/react-todomvc/pull/1) pull requests for guides and diffs to help you migrate from Create React App.
+The app was initialized with Create React App and migrated to Vite, Parcel 2, and Webpack 5. See the [Migrate from CRA to Vite](https://github.com/fission-suite/react-todomvc/pull/2), [Migrate from CRA to parcel](https://github.com/fission-suite/react-todomvc/pull/1), and [Migrate from CRA to Webpack](https://github.com/fission-suite/react-todomvc/pull/3) pull requests for guides and diffs to help you migrate from Create React App.
 
 ## Try it
 
