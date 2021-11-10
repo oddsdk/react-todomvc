@@ -1,7 +1,7 @@
 # Webnative React TodoMVC
 
 [![Built by FISSION](https://img.shields.io/badge/⌘-Built_by_FISSION-purple.svg)](https://fission.codes)
-[![Built by FISSION](https://img.shields.io/badge/webnative-v0.28.1-purple.svg )](https://github.com/fission-suite/webnative)
+[![Built by FISSION](https://img.shields.io/badge/webnative-v0.29.2-purple.svg )](https://github.com/fission-suite/webnative)
 [![Discord](https://img.shields.io/discord/478735028319158273.svg)](https://discord.gg/zAQBDEq)
 [![Discourse](https://img.shields.io/discourse/https/talk.fission.codes/topics)](https://talk.fission.codes)
 
@@ -16,6 +16,7 @@ The repository implements TodoMVC with React and [webnative](https://github.com/
 
 The app was initialized with Create React App and migrated to Vite, Parcel 2, and Webpack 5. See the [Migrate from CRA to Vite](https://github.com/fission-suite/react-todomvc/pull/2), [Migrate from CRA to parcel](https://github.com/fission-suite/react-todomvc/pull/1), and [Migrate from CRA to Webpack](https://github.com/fission-suite/react-todomvc/pull/3) pull requests for guides and diffs to help you migrate from Create React App.
 
+⚠️ Webnative 0.29.0 and newer versions no longer support Create React App. We will re-evaluate when a new version of Create React App is released.
 ## Try it
 
 The app is live at: https://young-turquoise-metalic-fairy.fission.app/
@@ -36,7 +37,10 @@ To work on the application locally:
 npm start
 ```
 
-Navigate to `localhost:3000` in your web browser or `localhost:1234` for Parcel.
+Open the app in your web browser:
+- Create React App and Vite: `localhost:3000`
+- Parcel: `localhost:1234`
+- Webpack: `localhost:8080`
 
 ## Build
 
@@ -46,7 +50,7 @@ Build the application.
 npm run build
 ```
 
-The build will be in `build` from Create React app and `dist` for Vite and Parel.
+The build will be in `build` for Create React app, `dist` for Vite and Parcel, and `public` for Webpack.
 
 ## Publish
 
