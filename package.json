@@ -12,7 +12,7 @@
     "todomvc-app-css": "^2.4.1",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2",
-    "webnative": "^0.28.1"
+    "webnative": "^0.29.2"
   },
   "scripts": {
     "start": "parcel public/index.html",
