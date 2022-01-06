@@ -16,7 +16,6 @@ The repository implements TodoMVC with React and [webnative](https://github.com/
 
 The app was initialized with Create React App and migrated to Vite, Parcel 2, and Webpack 5. See the [Migrate from CRA to Vite](https://github.com/fission-suite/react-todomvc/pull/2), [Migrate from CRA to parcel](https://github.com/fission-suite/react-todomvc/pull/1), and [Migrate from CRA to Webpack](https://github.com/fission-suite/react-todomvc/pull/3) pull requests for guides and diffs to help you migrate from Create React App.
 
-⚠️ Webnative 0.29.0 and newer versions no longer support Create React App. We will re-evaluate when a new version of Create React App is released.
 ## Try it
 
 The app is live at: https://young-turquoise-metalic-fairy.fission.app/
