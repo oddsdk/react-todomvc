@@ -3,6 +3,10 @@ import * as wn from 'webnative'
 
 wn.setup.debug({ enabled: true })
 
+// wn.ipfs.pkgFromBundle()
+//   .then(wn.ipfs.nodeWithPkg)
+//   .then(wn.ipfs.set)
+
 export function useAuth() {
   const [state, setState] = useState(null)
   let fs;
