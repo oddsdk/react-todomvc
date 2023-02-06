@@ -8,9 +8,9 @@ import TodoItem from "./TodoItem";
 
 
 export default function TodoList({ match }) {
-  const { fs } = useAuth();
+  const { fs, program } = useAuth();
 
-  const [todos, dispatch] = useFilesystem(fs);
+  const [todos, dispatch] = useFilesystem(fs, program?.configuration.namespace);
   const [newTodo, setNewTodo] = useState('');
 
   const onNewValue = event => {

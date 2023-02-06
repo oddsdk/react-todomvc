@@ -4,7 +4,7 @@ import { useAuth } from '../hooks/useAuth'
 
 
 const Login = () => {
-  const { authorise } = useAuth()
+  const { requestCapabilities } = useAuth()
 
   return (
     <div>
@@ -22,7 +22,7 @@ const Login = () => {
             cursor: 'pointer',
             fontSize: '20px'
           }}
-          onClick={() => authorise()}
+          onClick={() => requestCapabilities()}
         >
           <h2>Sign in with Fission</h2>
         </button>

@@ -1,43 +1,37 @@
 import { useEffect, useState } from 'react'
 import * as wn from 'webnative'
 
-wn.setup.debug({ enabled: true })
-
 export function useAuth() {
-  const [state, setState] = useState(null)
+  const [program, setState] = useState(null)
+
+  const appInfo =  { creator: 'fission', name: 'react-todomvc' };
   let fs;
 
-  const authorise = () => {
-    if (state) {
-      wn.redirectToLobby(state.permissions)
+  const requestCapabilities = () => {
+    if (program) {
+      program.capabilities.request()
     }
   }
 
   useEffect(() => {
     async function getState() {
-      const result = await wn.initialise({
+      const program = await wn.program({
+        debug: true,
+        namespace: appInfo,
         permissions: {
-          app: {
-            name: 'react-todomvc',
-            creator: 'bgins',
-          },
+          app: appInfo
         },
       })
-      setState(result)
+      console.log(program)
+      setState(program ?? null)
     }
 
     getState()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  switch (state?.scenario) {
-    case wn.Scenario.AuthSucceeded:
-    case wn.Scenario.Continuation:
-      fs = state.fs;
-      break;
-
-    default:
-      break;
+  if (program?.session) {
+    fs = program.session.fs;
   }
 
-  return { authorise, fs, state }
+  return { fs, program, requestCapabilities }
 }
