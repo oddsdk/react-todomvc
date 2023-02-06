@@ -7,10 +7,10 @@ import TodoList from './components/TodoList';
 import { useAuth } from './hooks/useAuth';
 
 function App() {
-  const { state } = useAuth()
+  const { program } = useAuth()
 
-  if (state) {
-    if (state?.authenticated) {
+  if (program) {
+    if (program.session) {
       return (
         <HashRouter>
           <React.Fragment>

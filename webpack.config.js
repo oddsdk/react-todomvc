@@ -4,7 +4,9 @@ module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'bundle.js',
-        path: path.join(__dirname, 'public')
+        path: path.join(__dirname, 'public'),
+        // https://stackoverflow.com/a/73027407
+        hashFunction: 'xxhash64'
     },
     mode: 'production',
     module: {
